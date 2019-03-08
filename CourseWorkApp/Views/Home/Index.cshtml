@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var weather = ViewData["WeatherInfo"] as OpenWeatherResponseDTO;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div class="container">
+        <div class="row">
+            <span>Current temperature in @weather?.Name, @weather?.Sys?.Country : @weather?.Main?.Temp &#8451; Max: @weather?.Main?.Temp_max &#8451;, Min: @weather?.Main?.Temp_min &#8451;, Pressure @weather?.Main?.Pressure hPa, Humidity @weather?.Main?.Humidity%</span>
+        </div>
+    </div>
+</div>

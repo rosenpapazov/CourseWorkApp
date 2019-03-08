@@ -1,0 +1,43 @@
+﻿@model CourseWorkApp.Data.DTOs.InvoiceDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Invoice</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ClientId, "Client", new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.ClientId, new SelectList(ViewData["Clients"] as IEnumerable<Client>, "ClientId", "Name"), "-Select Client-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ClientId, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.StockId, "Stock", new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.StockId, new SelectList(ViewData["Stocks"] as IEnumerable<Stock>, "StockId", "Name"), "-Select Stock-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StockId, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Count, "Count", new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Count, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Count, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
